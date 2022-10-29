@@ -4,6 +4,7 @@ const User = mongoose.model("User");
 
 const newPost = async (req, res) => {
   try {
+    console.log(req.file)
     const post = new Post({
       ...req.body,
       user: req.user.userId,
