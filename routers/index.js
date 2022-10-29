@@ -4,6 +4,7 @@ const router = express.Router();
 
 const authRouter = require("./Auth.router");
 const userRouter = require("./User.router");
+const postRouter = require("./Post.router");
 
 router.get("/", (req, res) => {
   res.send(`
@@ -13,5 +14,6 @@ router.get("/", (req, res) => {
 
 router.use("/auth", authRouter);
 router.use("/user", userRouter);
+router.use("/post", postRouter);
 
 module.exports = router;
