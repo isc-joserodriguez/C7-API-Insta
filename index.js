@@ -9,11 +9,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-//! Static Server
+app.use(express.static(`${__dirname}/uploads`));
 
 mongoose.connect(process.env.MONGO_URI);
 
-app.use('v1', routers)
+app.use("v1", routers);
 
 app.use((req, res) => {
   res.send('<a href="/v1">Regresa a la API </a>');
