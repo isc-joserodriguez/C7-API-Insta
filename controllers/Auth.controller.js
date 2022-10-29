@@ -5,7 +5,10 @@ const registro = async (req, res) => {
   try {
     const { password } = req.body;
     delete req.body.password;
-    const user = new User(req.body);
+    const user = new User({
+      ...req.body,
+      avatar: `avatar/${req.file.filename}`,
+    });
 
     user.hashPassword(password);
     await user.save();
