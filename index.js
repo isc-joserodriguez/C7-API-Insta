@@ -1,9 +1,9 @@
 require("dotenv").config();
-//! Models
+require("./models");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-//! Routes
+const routers = require("./routers");
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI);
 
-/* app.use('v1', ) */
+app.use('v1', routers)
 
 app.use((req, res) => {
   res.send('<a href="/v1">Regresa a la API </a>');
